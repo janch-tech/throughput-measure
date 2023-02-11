@@ -1,17 +1,9 @@
-# throughput-measure
-A tool for measuring throughput
+import asyncio
+import sys
 
-# Usage
-
-```bash
-python3 main.py
-```
-
-# Modification
-
-```python3
-
-# Pass required params in main.py
+from data_source_example import example_config_file
+from do_logging import log
+from throughput_measure import runner
 
 if __name__ == '__main__':
     log("Starting")
@@ -23,6 +15,3 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         log("Bye!!")
         sys.exit()
-
-
-```
