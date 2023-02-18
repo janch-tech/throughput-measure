@@ -1,0 +1,31 @@
+[project]
+name = "throughput_measure"
+version = "0.0.1"
+authors = [
+  { name="Taari Malta", email="taarimalta@gmail.com" },
+]
+description = "A python package to control the throughput to meet a desired response rate"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "aiohttp>=3.8.4"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/janch-tech/throughput-measure"
+"Bug Tracker" = "https://github.com/janch-tech/throughput-measure/issues"
+
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+
+
+[project.scripts]
+throughput-measure = "throughput_measure.main:cli"

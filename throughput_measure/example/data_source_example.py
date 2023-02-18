@@ -1,4 +1,4 @@
-from source_simulation import ConstantResponseRate
+from throughput_measure.example.source_simulation import ConstantResponseRate
 
 fooSource = ConstantResponseRate(1000)
 barSource = ConstantResponseRate(200)
