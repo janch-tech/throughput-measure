@@ -3,6 +3,9 @@ from throughput_measure.example import data_source_example
 from throughput_measure.utils.context_util import measurement_config
 import aiohttp
 
+from throughput_measure.utils.decorator_util import throughput_target_function
+from throughput_measure.utils.run_util import run_throughput_measure
+
 
 async def test_function():
     async with aiohttp.ClientSession() as session:
@@ -11,7 +14,7 @@ async def test_function():
             await resp.text()
 
 
-def cli():
+def cli_example_using_context_manager():
     log("Starting")
     with measurement_config(5) as config:
         config['foo'] = {
@@ -28,3 +31,19 @@ def cli():
             'probability': 0.5,
             'function': test_function
         }
+
+
+def cli():
+    @throughput_target_function(probabilty=0.1)
+    async def my_foo_target():
+        await data_source_example.foo()
+
+    @throughput_target_function(probabilty=0.2)
+    async def my_bar_target():
+        await data_source_example.bar()
+
+    @throughput_target_function(probabilty=0.3)
+    async def my_test_function():
+        await test_function()
+
+    run_throughput_measure(target_response_rate_in_sec=5)
